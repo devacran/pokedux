@@ -23,7 +23,7 @@ Todos los datos vienen de [PokeApi](https://pokeapi.co/)
 
 ## Playground 
 
-https://codesandbox.io/s/redux-app-e9sg55
+[Play here](https://codesandbox.io/s/github/devacran/pokedux)
 
 ## 🧾 License
 
