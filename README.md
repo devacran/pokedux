@@ -21,6 +21,10 @@
 
 Todos los datos vienen de [PokeApi](https://pokeapi.co/)
 
+## Playground 
+
+https://codesandbox.io/s/redux-app-e9sg55
+
 ## 🧾 License
 
 The MIT License (MIT)
