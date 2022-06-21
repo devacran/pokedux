@@ -1,31 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import Searcher from '../../components/Searcher';
-import PokemonList from '../../components/PokemonList';
-import { getPokemons } from '../../api/getPokemons';
-import { setPokemons as setPokemonsAction } from '../../actions';
-import './styles.css';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Searcher from "../../components/Searcher";
+import PokemonList from "../../components/PokemonList";
+import { getPokemons } from "../../api/getPokemons";
+import { setPokemons as setPokemonsAction } from "../../actions";
+import "./styles.css";
 
-const mapStateToProps = (state) => ({
-  pokemons: state.list,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setPokemons: (value) => dispatch(setPokemonsAction(value)),
-});
-
-function Home({ setPokemons, pokemons }) {
+function Home() {
+  const pokemonList = useSelector((state) => state.list);
+  const dispatch = useDispatch();
   useEffect(() => {
     getPokemons().then((res) => {
-      setPokemons(res.results);
+      dispatch(setPokemonsAction(res.results));
     });
   }, []);
 
   return (
-    <div className='Home'>
+    <div className="Home">
       <Searcher />
-      <PokemonList pokemons={pokemons} />
+      <PokemonList pokemons={pokemonList} />
     </div>
   );
 }
@@ -34,4 +28,4 @@ Home.defaultProps = {
   pokemons: [],
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
