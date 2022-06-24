@@ -1,4 +1,10 @@
-import { SET_POKEMONS, SET_LOADING } from "./types";
+import {
+  SET_POKEMONS,
+  SET_LOADING,
+  INCREASE_COUNTER,
+  DECREASE_COUNTER,
+  INCREASE_COUNTER_ASYNC,
+} from "./types";
 import { getPokemons } from "../api/getPokemons";
 
 export const setPokemons = (payload) => ({
@@ -8,6 +14,16 @@ export const setPokemons = (payload) => ({
 export const setLoading = (payload) => ({
   type: SET_LOADING,
   payload,
+});
+
+export const increaseCounter = () => ({
+  type: INCREASE_COUNTER,
+});
+export const decreaseCounter = () => ({
+  type: DECREASE_COUNTER,
+});
+export const increaseCounterAsync = () => ({
+  type: INCREASE_COUNTER_ASYNC,
 });
 
 export const getPokemonsWithDetails = () => (dispatch, getState) => {

@@ -4,14 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import Searcher from "../../components/Searcher";
 import PokemonList from "../../components/PokemonList";
 import { getPokemons } from "../../api/getPokemons";
+import Counter from "../../components/Counter";
 import {
   setPokemons as setPokemonsAction,
   getPokemonsWithDetails,
+  increaseCounter as increaseCounterAction,
+  decreaseCounter as decreaseCounterAction,
+  increaseCounterAsync as increaseCounterAsyncAction,
 } from "../../actions";
 import "./styles.css";
 
 function Home() {
   const pokemonList = useSelector((state) => state.list);
+  const counterValue = useSelector((state) => state.counter);
   const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
 
@@ -25,6 +30,12 @@ function Home() {
   return (
     <div className="Home">
       <Searcher />
+      <Counter
+        value={counterValue}
+        onIncrement={() => dispatch(increaseCounterAction())}
+        onDecrement={() => dispatch(decreaseCounterAction())}
+        onIncrementAsync={() => dispatch(increaseCounterAsyncAction())}
+      />
       <PokemonList pokemons={pokemonList} />
     </div>
   );
